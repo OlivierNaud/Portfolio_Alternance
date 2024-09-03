@@ -1,0 +1,132 @@
+@import "./mixin.scss";
+.accueil {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    // @include tablet {
+    //     height: 10vh;
+    // }
+}
+
+.fondimg {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(0.7);
+}
+
+.identite {
+    position: absolute;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    color: white;
+    height: 100vh;
+
+    .name {
+        margin: 0;
+        padding: 0;
+        font-size: 80px;
+        font-family: serif;
+
+        @include phone {
+            font-size: 50px;
+        }
+    }
+
+    .metier {
+        font-size: 30px;
+
+        @include phone {
+            font-size: 20px;
+        }
+    }
+}
+
+.buttonDown {
+    position: absolute;
+    bottom: 0;
+    height: 40vh;
+    width: 100%;
+    background: linear-gradient(transparent, 40%, black);
+}
+
+.qrcode {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.6588235294);
+    transition: 0.2s;
+    top: 50%;
+    transform: translate(0, -50%);
+    cursor: grap;
+    cursor: -webkit-grab;
+    z-index: 1200;
+    box-shadow: 0 0 5px white;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 10px;
+
+    @include tablet {
+        display: none;
+    }
+
+    div {
+        font-size: 20px;
+        color: white;
+    }
+
+    .doc {
+        position: relative;
+        float: right;
+        color: white;
+        height: auto;
+        width: 120%;
+    }
+}
+
+.containerPopup {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000a1;
+    display: none;
+    z-index: 1002;
+
+    .popup {
+        position: fixed;
+        width: 30%;
+        height: 50%;
+        background-color: black;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+.titreQrcode {
+    background: linear-gradient(to right, #61dafb, #fb61da);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    transform: translate(-50%, 0);
+
+    svg {
+        margin: 0 20px 0 20px;
+        color: white;
+    }
+}
