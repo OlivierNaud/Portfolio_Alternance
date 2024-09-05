@@ -7,13 +7,13 @@ const port = 5000;
 // BDD
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(
-  process.env.DATABASE,
-  process.env.USER,
-  process.env.PASSWORD,
+  dotenv.parsed.DATABASE,
+  dotenv.parsed.USER,
+  dotenv.parsed.PASSWORD,
   {
-    host: process.env.HOST,
-    dialect: process.env.DIALECT,
-    version: process.env.VERSION_DIALECT,
+    host: dotenv.parsed.HOST,
+    dialect: dotenv.parsed.DIALECT,
+    version: dotenv.parsed.VERSION_DIALECT,
   }
 );
 
