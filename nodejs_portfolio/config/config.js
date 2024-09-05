@@ -5,6 +5,7 @@ const Config = {
     database: process.env.DATABASE,
     host: process.env.HOST,
     dialect: process.env.DIALECT,
+    version: process.env.VERSION_DIALECT,
   },
   test: {
     username: process.env.USER,
