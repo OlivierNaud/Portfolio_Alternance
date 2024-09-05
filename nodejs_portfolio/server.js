@@ -1,7 +1,6 @@
 // LANCEMENT SERVER
 const express = require("express");
 const dotenv = require("dotenv").config();
-console.log(process.env.USER);
 const app = express();
 const port = 5000;
 
@@ -13,7 +12,8 @@ const sequelize = new Sequelize(
   process.env.PASSWORD,
   {
     host: process.env.HOST,
-    dialect: process.env.DIALECT, // Remplacez mysql par le dialecte de votre base de données
+    dialect: process.env.DIALECT,
+    version: process.env.VERSION_DIALECT,
   }
 );
 
