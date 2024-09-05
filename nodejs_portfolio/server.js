@@ -13,7 +13,6 @@ const sequelize = new Sequelize(
   {
     host: dotenv.parsed.HOST,
     dialect: dotenv.parsed.DIALECT,
-    version: dotenv.parsed.VERSION_DIALECT,
   }
 );
 
