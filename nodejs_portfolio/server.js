@@ -1,15 +1,21 @@
 // LANCEMENT SERVER
 const express = require("express");
 const dotenv = require("dotenv").config();
+console.log(process.env.USER);
 const app = express();
 const port = 5000;
 
 // BDD
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize("portfolio", "root", "", {
-  host: "127.0.0.1",
-  dialect: "mariadb", // Remplacez mysql par le dialecte de votre base de données
-});
+const sequelize = new Sequelize(
+  process.env.DATABASE,
+  process.env.USER,
+  process.env.PASSWORD,
+  {
+    host: process.env.HOST,
+    dialect: process.env.DIALECT, // Remplacez mysql par le dialecte de votre base de données
+  }
+);
 
 (async () => {
   try {
