@@ -3,16 +3,15 @@ const express = require("express");
 const dotenv = require("dotenv").config();
 const app = express();
 const port = 5000;
-
 // BDD
 const Sequelize = require("sequelize");
 const sequelize = new Sequelize(
-  dotenv.parsed.DATABASE,
-  dotenv.parsed.USER,
-  dotenv.parsed.PASSWORD,
+  process.env.DATABASE,
+  process.env.USER,
+  process.env.PASSWORD,
   {
-    host: dotenv.parsed.HOST,
-    dialect: dotenv.parsed.DIALECT,
+    host: process.env.HOST,
+    dialect: process.env.DIALECT,
   }
 );
 
