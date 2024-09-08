@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { API_URL } from "../../App";
 
 const ProjetEntreprise = () => {
   const [projetPersonnel, setProjetPersonnel] = useState([]);
 
   const getProjetPersonnel = async () => {
     try {
-      const resultProjet = await axios.get("http://localhost:5000/projet");
+      const resultProjet = await axios.get(`${API_URL}/projet`);
       const filter = resultProjet.data.filter(
         (projet) => projet.id_tagProjet === 1
       );
@@ -21,7 +22,7 @@ const ProjetEntreprise = () => {
 
   const getProjetTechno = async () => {
     try {
-      const oui = await axios.get("http://localhost:5000/projettechno");
+      const oui = await axios.get(`${API_URL}/projettechno`);
       setProjetTechno(oui.data);
       console.log(projetTechno);
     } catch (err) {
@@ -38,12 +39,12 @@ const ProjetEntreprise = () => {
     <div className="projetEcole">
       <div className="containerGlobal">
         {projetPersonnel.map((projet) => (
-          <div className="containerBloc">
+          <div key={projet.id_projet} className="containerBloc">
             <div className="projet">
               <div
                 className="imgProjet"
                 style={{
-                  backgroundImage: `url(http://localhost:5000/images/${projet.id_image_image.img})`,
+                  backgroundImage: `url(${API_URL}/images/${projet.id_image_image.img})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}

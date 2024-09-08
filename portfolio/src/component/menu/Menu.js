@@ -5,12 +5,14 @@ import { IoMdMail } from "react-icons/io";
 import { RiComputerFill } from "react-icons/ri";
 import { TbXboxXFilled } from "react-icons/tb";
 
+import { API_URL } from "../../App";
+
 const Menu = (props) => {
   const [infoPerso, setInfoPerso] = useState([]);
 
   const getInfoPerso = async () => {
     try {
-      const result = await axios.get("http://localhost:5000/infoPerso");
+      const result = await axios.get(`${API_URL}/infoPerso`);
       setInfoPerso(result.data);
     } catch (err) {
       console.error(err);
@@ -75,7 +77,7 @@ const Menu = (props) => {
           <div
             className="imgContact"
             style={{
-              backgroundImage: `url(http://localhost:5000/images/${infoPerso[0]?.imageinfo.img})`,
+              backgroundImage: `url(${API_URL}/images/${infoPerso[0]?.imageinfo.img})`,
             }}
           ></div>
           <div className="ficheContact">

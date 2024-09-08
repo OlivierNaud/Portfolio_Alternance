@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { API_URL } from "../../App";
 
 function AboutMe() {
   const [infoPerso, setInfoPerso] = useState([]);
 
   const getInfoPerso = async () => {
     try {
-      const result = await axios.get("http://localhost:5000/infoPerso");
+      const result = await axios.get(`${API_URL}/infoPerso`);
       setInfoPerso(result.data);
     } catch (err) {
       console.error(err);
@@ -17,9 +18,7 @@ function AboutMe() {
   const [technologieMedium, setTechnologieMedium] = useState([]);
   const getTechnologie = async () => {
     try {
-      const resultTechnologie = await axios.get(
-        "http://localhost:5000/technologie"
-      );
+      const resultTechnologie = await axios.get(`${API_URL}/technologie`);
       const filterExpert = resultTechnologie.data.filter(
         (techno) => techno.id_niveauTechno === 3 && techno.nom !== "HTML- CSS"
       );
@@ -47,7 +46,7 @@ function AboutMe() {
         <div
           className="taillePhoto"
           style={{
-            backgroundImage: `url(http://localhost:5000/images/${infoPerso[0]?.imageinfo.img})`,
+            backgroundImage: `url(${API_URL}/images/${infoPerso[0]?.imageinfo.img})`,
             backgroundSize: "cover",
           }}
         ></div>
@@ -67,8 +66,8 @@ function AboutMe() {
             <span></span>
             {technologieExpert.map((techno) => (
               <img
-                key={techno.id}
-                src={`http://localhost:5000/images/${techno.imagetechno.img}`}
+                key={"tech_expert" + techno.id_technologie}
+                src={`${API_URL}/images/${techno.imagetechno.img}`}
                 alt=""
               />
             ))}
@@ -76,7 +75,8 @@ function AboutMe() {
           <div className="technoMedium">
             {technologieMedium.map((techno) => (
               <img
-                src={`http://localhost:5000/images/${techno.imagetechno.img}`}
+                key={"tech_medium" + techno.id_technologie}
+                src={`${API_URL}/images/${techno.imagetechno.img}`}
                 alt=""
               />
             ))}

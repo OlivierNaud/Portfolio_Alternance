@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { API_URL } from "../../App";
 
 const ProjetPerso = () => {
   //PROJET DATA
@@ -7,7 +8,7 @@ const ProjetPerso = () => {
 
   const getProjetEntreprise = async () => {
     try {
-      const result = await axios.get("http://localhost:5000/projet");
+      const result = await axios.get(`${API_URL}/projet`);
       const filter = result.data.filter((projet) => projet.id_tagProjet === 3);
       setProjetEntreprise(filter);
     } catch (err) {
@@ -20,7 +21,7 @@ const ProjetPerso = () => {
 
   const getProjetTechno = async () => {
     try {
-      const oui = await axios.get("http://localhost:5000/projettechno");
+      const oui = await axios.get(`${API_URL}/projettechno`);
       setProjetTechno(oui.data);
     } catch (err) {
       console.error(err);
@@ -39,9 +40,9 @@ const ProjetPerso = () => {
         {/* x3 */}
         {projetEntreprise.map((projet) => (
           <div
-            key={projet.id}
+            key={"img" + projet.id_projet}
             style={{
-              backgroundImage: `url(http://localhost:5000/images/${projet.id_image_image.img})`,
+              backgroundImage: `url(${API_URL}/images/${projet.id_image_image.img})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}
@@ -64,7 +65,10 @@ const ProjetPerso = () => {
       <hr />
       <div className="descriptionProjet">
         {projetEntreprise.map((projet) => (
-          <div className="hoverDescription">
+          <div
+            key={"description" + projet.id_projet}
+            className="hoverDescription"
+          >
             <h3 className="degradText">{projet.nom}</h3>
             <p>{projet.resume}</p>
           </div>

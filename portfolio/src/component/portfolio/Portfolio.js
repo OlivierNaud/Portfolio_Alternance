@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import { BsQrCode } from "react-icons/bs";
 import { IoMdDownload } from "react-icons/io";
+import { API_URL } from "../../App";
 import AboutMe from "../aboutMe/AboutMe";
 import Menu from "../menu/Menu";
 import ProjetEntreprise from "../projetEntreprise/ProjetEntreprise";
@@ -55,7 +56,7 @@ function Portfolio() {
 
   const getAccueil = async () => {
     try {
-      const result = await axios.get("http://localhost:5000/accueil");
+      const result = await axios.get(`${API_URL}/accueil`);
       setAccueil(result.data);
     } catch (err) {
       console.error(err);
@@ -66,7 +67,7 @@ function Portfolio() {
 
   const getPopupImg = async () => {
     try {
-      const result = await axios.get("http://localhost:5000/image");
+      const result = await axios.get(`${API_URL}/image`);
       const filterPopup = result.data.filter((popup) => popup.nom === "qrcode");
       setPopupImg(filterPopup);
     } catch (err) {
@@ -119,7 +120,7 @@ function Portfolio() {
         <div
           className="fondimg"
           style={{
-            backgroundImage: `url(http://localhost:5000/images/${accueil[0]?.id_image_accueil.img})`,
+            backgroundImage: `url(${API_URL}/images/${accueil[0]?.id_image_accueil.img})`,
           }}
         ></div>
         <div className="identite">
@@ -141,7 +142,7 @@ function Portfolio() {
           <div
             className="popup"
             style={{
-              backgroundImage: `url(http://localhost:5000/images/${popupImg[0]?.img})`,
+              backgroundImage: `url(${API_URL}/images/${popupImg[0]?.img})`,
             }}
           ></div>
         </div>
