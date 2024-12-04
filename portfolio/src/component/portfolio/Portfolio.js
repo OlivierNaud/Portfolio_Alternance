@@ -125,7 +125,7 @@ function Portfolio() {
         ></div>
         <div className="identite">
           <h1 className="name">Olivier Naud</h1>
-          <p className="metier">Développeur Full Stack</p>
+          <p className="metier">Développeur Front End</p>
         </div>
         <div className="buttonDown"></div>
         <div className="qrcode" onClick={() => popUp()}>

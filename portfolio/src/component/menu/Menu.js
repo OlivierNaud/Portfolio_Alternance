@@ -56,7 +56,7 @@ const Menu = (props) => {
         </button>
         <a
           className="displayCV"
-          href="https://drive.google.com/file/d/1ycHT7m7HWYagyBR-sD1c1iS6f4uQ8Vtt/view?usp=drive_link"
+          href="https://drive.google.com/file/d/13ISnHht0FDKDB5q3uImQAMPPqm13_zKc/view?usp=drive_link"
           download="CV_Olivier_Naud.pdf"
         >
           <button
